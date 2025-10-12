@@ -1,0 +1,39 @@
+# .github/workflows/nextjs_deploy.yml
+
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # يتم التشغيل عند الرفع إلى فرع main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # تشغيل العملية على نظام Linux
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4 # استنساخ الكود من المستودع
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # استخدام نسخة Node.js المناسبة (20)
+
+      - name: Install Dependencies and Build
+        run: |
+          npm install
+          npm run build
+          # *******************************************************
+          # ملاحظة مهمة: هذه الخطوة ضرورية لـ Next.js و GitHub Pages
+          # تحويل مخرجات البناء (build output) إلى ملفات ثابتة (static) 
+          # ووضعها في مجلد "out"
+          npm install next-export-optimize-images
+          npm run export # هذا يتطلب تعديل ملف package.json (الخطوة 3)
+          # *******************************************************
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out # النشر من مجلد 'out' الذي تم إنشاؤه
