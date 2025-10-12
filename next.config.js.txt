@@ -1,0 +1,16 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // تفعيل خاصية Next.js لتصدير موقع ثابت (Static Export)
+  output: 'export',
+  
+  // تحديد المسار الأساسي (Base Path) ليطابق اسم المستودع
+  // اسم المستودع الخاص بك هو: Portfolio-TD7
+  basePath: '/Portfolio-TD7',
+
+  // لمنع تحميل الصور بشكل متأخر أو استخدام تحسينات الصور التي لا تعمل على الاستضافة الثابتة
+  images: {
+    unoptimized: true,
+  },
+};
+
+module.exports = nextConfig;
