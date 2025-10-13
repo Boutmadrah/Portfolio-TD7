@@ -1,13 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // تفعيل خاصية Next.js لتصدير موقع ثابت (Static Export)
+  // تفعيل خاصية التصدير الساكن
   output: 'export',
   
-  // تحديد المسار الأساسي (Base Path) ليطابق اسم المستودع
-  // اسم المستودع الخاص بك هو: Portfolio-TD7
+  // يجب أن تتطابق هذه القيمة تماماً مع اسم المستودع: /Portfolio-TD7
   basePath: '/Portfolio-TD7',
-
-  // لمنع تحميل الصور بشكل متأخر أو استخدام تحسينات الصور التي لا تعمل على الاستضافة الثابتة
+  
+  // مهم جداً: يجب أن يتم تعطيل ضغط الصور، وإلا لن تعمل على GitHub Pages
   images: {
     unoptimized: true,
   },
