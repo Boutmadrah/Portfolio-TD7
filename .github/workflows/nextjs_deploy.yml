@@ -22,11 +22,15 @@ jobs:
         run: |
           npm install
 
-      - name: Build and export
+      - name: Build
         run: |
           npm run build
-          # If you need static export for GitHub Pages, run the export step below.
-          # Make sure package.json contains an "export" script that calls `next export`.
+
+      - name: Export (optional)
+        run: |
+          # If you need static export for GitHub Pages, ensure package.json
+          # contains an "export" script that calls `next export`, then
+          # uncomment the line below or keep it as a no-op.
           npm run export || true
 
       - name: Deploy to GitHub Pages
