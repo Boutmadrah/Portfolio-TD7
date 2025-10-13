@@ -24,14 +24,8 @@ jobs:
 
       - name: Build
         run: |
+          # هذا الأمر سيقوم بالبناء والتصدير إلى مجلد 'out' بسبب التعديل في next.config.js
           npm run build
-
-      - name: Export (optional)
-        run: |
-          # If you need static export for GitHub Pages, ensure package.json
-          # contains an "export" script that calls `next export`, then
-          # uncomment the line below or keep it as a no-op.
-          npm run export || true
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
