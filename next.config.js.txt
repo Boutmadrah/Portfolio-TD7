@@ -1,17 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // هذا الإعداد يخبر Next.js بتصدير المشروع كملفات HTML ثابتة في مجلد "out"
+  // ⭐️ الإعداد الأول: لتصدير المشروع كملفات HTML ثابتة
   output: 'export',
   
-  // قم بإضافة مسار القاعدة (Base Path) ليتطابق مع اسم المستودع (Repository) الخاص بك
-  // يجب عليك تغيير 'YOUR_REPO_NAME' إلى الاسم الفعلي لمستودعك على GitHub
-  // مثال: إذا كان رابطك هو: https://github.com/myuser/my-portfolio، فاستبدلها بـ '/my-portfolio'
-  basePath: '/YOUR_REPO_NAME',
+  // ⭐️ الإعداد الثاني: لتحديد مسار القاعدة ليتطابق مع اسم المستودع
+  // يجب عليك تغيير '/TD7-PORTFOLIO' إلى الاسم الفعلي لمستودعك (أفترض أنه TD7-PORTFOLIO من الصورة)
+  basePath: '/TD7-PORTFOLIO', // تأكد من مطابقة الاسم بدقة (مع الشرطة المائلة الأمامية)
   
-  // إعداد اختياري: لتعطيل استخدام الصور المحسّنة التي قد لا تعمل في التصدير الثابت
+  // إعداد الصور الذي أضفته
   images: {
     unoptimized: true,
-  }
+  },
 };
 
 module.exports = nextConfig;
