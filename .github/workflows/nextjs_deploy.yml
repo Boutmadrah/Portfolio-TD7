@@ -27,6 +27,20 @@ jobs:
           # هذا الأمر سيقوم بالبناء والتصدير إلى مجلد 'out' بسبب التعديل في next.config.js
           npm run build
 
+      - name: Assemble out/ for GitHub Pages
+        run: |
+          echo "Preparing out/ from .next for GitHub Pages"
+          mkdir -p out
+          # copy prerendered pages (if any)
+          if [ -d .next/server/pages ]; then
+            cp -r .next/server/pages/* out/ || true
+          fi
+          # copy static assets
+          if [ -d .next/static ]; then
+            mkdir -p out/_next
+            cp -r .next/static out/_next/static || true
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
